@@ -1,0 +1,51 @@
+package fullcreativetask;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe" );
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("http://www.htmlcanvasstudio.com/");
+		
+		WebElement line = driver.findElement(By.cssSelector("input[class='button line']"));
+		line.click();
+			
+		driver.switchTo().frame("google_osd_static_frame");
+		WebElement canvas = driver.findElement(By.cssSelector("canvas[id='imageView']"));
+		
+		Actions actions = new Actions (driver);
+		
+		Action action = movetoElement(canvas);
+		
+		actions.dragAndDropBy(line,300,175).perform();
+		actions.dragAndDropBy(line,300,140).perform();
+		
+		WebElement rectangle = driver.findElement(By.xpath("//input[@class='button rectangle']"));
+		Action action2 = clickAndHold(rectangle);
+		actions.dragAndDropBy(rectangle,320,140).perform();
+		
+		WebElement eraser = driver.findElement(By.xpath("//input[@class='button eraser']"));
+		Action action3 = clickAndHold(eraser);
+		actions.dragAndDropBy(eraser,320,140).perform();
+
+	}
+
+	private static Action clickAndHold(WebElement rectangle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static Action movetoElement(WebElement line) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
